@@ -1,4 +1,5 @@
-# Implementation of a custom Stochastic Gradient Descent with Warm Restarts (SGDR) as a Keras callback function
+# Implementation of a custom Stochastic Gradient Descent with Warm Restarts (SGDR) 
+as a Keras callback function
 
 ## Args
 ## Parameters:
