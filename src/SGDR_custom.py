@@ -173,7 +173,6 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
                 if self.if_no_post_warmup == 0:
                     self.warmup_length = 1 
                     self.warmup_mult_factor = 1
-
             else:
                 self.max_lr *= self.general_lr_decay                       # general_lr_decay after 2nd warmup or cooldown mode
         
