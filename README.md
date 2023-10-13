@@ -35,7 +35,7 @@ A cyclical learning rate is a policy of learning rate adjustment that increases 
 
 ## Examples
 
-### 1. Cosine annealing with initial warmup and decaying max-lr. Fixed lenght for cycles.
+### 1. Cosine annealing with initial warmup, decaying max-lr and increasing warmup length. Fixed length for cycles.
 
 ```python
 sgdr = SGDRScheduler_custom(
@@ -48,8 +48,8 @@ sgdr = SGDRScheduler_custom(
     init_cooldown_length=30,
     init_cooldown_mult_factor=1.1,
     warmup_length=10,
-    warmup_mult_factor=1,
-    if_no_post_warmup=0,
+    warmup_mult_factor=1.2,
+    if_no_post_warmup=1,
     number_of_cooldowns_before_switch=0,
     new_cooldown_length=30,
     new_cooldown_mult_factor=1.1,
@@ -105,7 +105,7 @@ sgdr = SGDRScheduler_custom(
 ![example3](./TEST/LRS_3.png "example3")
 
 
-### 4. Cosine annealing with initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 75% reduced max-lr.
+### 4. Cosine annealing with minimum initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 75% reduced max-lr.
 
 ```python
 sgdr = SGDRScheduler_custom(
@@ -117,7 +117,7 @@ sgdr = SGDRScheduler_custom(
     if_warmup_cooldown_start=0,
     init_cooldown_length=20,
     init_cooldown_mult_factor=1,
-    warmup_length=10,
+    warmup_length=1,
     warmup_mult_factor=1,
     if_no_post_warmup=0,
     number_of_cooldowns_before_switch=5,
