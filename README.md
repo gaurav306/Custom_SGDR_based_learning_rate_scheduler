@@ -37,4 +37,4 @@ A cyclical learning rate is a policy of learning rate adjustment that increases 
 
 ### Cosine annealing with initial warmup and decaying max learning rate
 
-![example1](./src/LRS_1.png "example1")
+![example1](./TEST/LRS_1.png "example1")
