@@ -36,8 +36,24 @@ A cyclical learning rate is a policy of learning rate adjustment that increases 
 ## Examples
 
 ### Cosine annealing with initial warmup and decaying max learning rate
+
 ```python
-DASFSDFG
+sgdr = SGDRScheduler_custom(
+    min_lr=0.0001, 
+    max_lr=0.01, 
+    steps_per_epoch=68,
+    first_lr_drop_mult=1,
+    general_lr_decay=0.95, 
+    if_warmup_cooldown_start=0,
+    init_cooldown_length=30,
+    init_cooldown_mult_factor=1.1,
+    warmup_length=10,
+    warmup_mult_factor=1,
+    if_no_post_warmup=0,
+    number_of_cooldowns_before_switch=4,
+    new_cooldown_length=30,
+    new_cooldown_mult_factor=1.1,
+    )
 ```
 
 ![example1](./TEST/LRS_1.png "example1")
