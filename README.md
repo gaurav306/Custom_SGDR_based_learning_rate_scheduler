@@ -1,6 +1,13 @@
 # Implementation of a custom Stochastic Gradient Descent with Warm Restarts (SGDR) 
 This repository includes a custom Keras callback to be used in training that allows implementation of cyclical learning rate policies. 
 
+## How to use?
+The custom Keras callback is available in a Python file named *SGDR_custom.py* located in the *src/* directory. You can directly import this callback into your code for use during the training process.
+
+## Visualization of Learning Rate Schedule
+To help you plan the parameters of the learning rate policy, a Jupyter Notebook is available under *TEST/LRS_plot.ipynb*. This notebook allows you to visualize the learning rate schedule, providing insights into how the learning rate will change across epochs.
+
+
 ## Parameters:
 - **min_lr (float):** Minimum learning rate during the entire training.
 - **max_lr (float):** Maximum learning rate before each restart.
