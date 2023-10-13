@@ -103,12 +103,16 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
         fraction_to_restart = self.batch_since_restart / (self.steps_per_epoch * self.init_cooldown_length)
         lr = self.min_lr + 0.5 * (self.max_lr - self.min_lr) * (1 + np.cos(fraction_to_restart * np.pi))
         #lr = self.min_lr + (self.max_lr - self.min_lr) * (1-fraction_to_restart)
+        if self.verbose == 1:
+            print('[TrainClass] cosine_cooldown_clr - fraction_to_restart-', fraction_to_restart)
         return lr
     
     def warmup_clr(self):
         '''Calculate the learning rate during warmup.'''
         fraction_to_restart = self.batch_since_warmup / (self.steps_per_epoch * self.warmup_length)
         lr = self.min_lr + (self.max_lr - self.min_lr) * fraction_to_restart
+        if self.verbose == 1:
+            print('[TrainClass] warmup_clr - fraction_to_restart-', fraction_to_restart)
         return lr
 
     def on_train_begin(self, logs={}):
@@ -118,7 +122,6 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
 
     def on_batch_end(self, batch, logs={}):
         '''Record previous batch statistics and update the learning rate.'''
-        
         if self.warmup_cycle_mode==0:
             K.set_value(self.model.optimizer.lr, self.warmup_clr()) 
             self.batch_since_warmup += 1     
@@ -133,7 +136,6 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
 
     def on_epoch_end(self, epoch, logs={}):
         '''Check for end of current cycle, apply restarts when necessary.'''
-        
         if epoch+1 == self.next_restart:
             self.warmup_cycle_mode = not self.warmup_cycle_mode # swap 0 to 1 and vice versa
             
@@ -157,7 +159,6 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
                 self.flagswitch = self.flagswitch + 1
                 if self.verbose == 1:
                     print('[TrainClass] Cycle restart at epoch %s, lr-' % (epoch+1), K.get_value(self.model.optimizer.lr))
-        
         
         if epoch+1 == self.next_restart-1:
             self.cycle_step_flag = self.cycle_step_flag + 1                    # counts the number of warmup or cooldown mode
