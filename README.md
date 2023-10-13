@@ -105,7 +105,7 @@ sgdr = SGDRScheduler_custom(
 ![example3](./TEST/LRS_3.png "example3")
 
 
-### 4. Cosine annealing with minimum initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 70% reduced max-lr.
+### 4. Cosine annealing with initial warmup, increasing warmup length, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 70% reduced max-lr.
 
 ```python
 sgdr = SGDRScheduler_custom(
@@ -117,9 +117,9 @@ sgdr = SGDRScheduler_custom(
     if_warmup_cooldown_start=0,
     init_cooldown_length=20,
     init_cooldown_mult_factor=1,
-    warmup_length=1,
-    warmup_mult_factor=1,
-    if_no_post_warmup=0,
+    warmup_length=5,
+    warmup_mult_factor=1.2,
+    if_no_post_warmup=1,
     number_of_cooldowns_before_switch=5,
     new_cooldown_length=40,
     new_cooldown_mult_factor=1.2,

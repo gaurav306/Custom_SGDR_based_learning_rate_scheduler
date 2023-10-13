@@ -17,7 +17,7 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
         first_lr_drop_mult (float): Drop factor for learning rate after the first warmup.
         general_lr_decay (float): Decay factor for learning rate.
 
-        if_warmup_cooldown_start (int): 0 for warmup start, 0 for cooldown start. Decide whether to start with warmup or cooldown step.
+        if_warmup_cooldown_start (int): 0 for warmup start, 1 for cooldown start. Decide whether to start with warmup or cooldown step.
 
         init_cooldown_length (int): Initial number of epochs in a cooldown step.
         init_cooldown_mult_factor (float): Factor to grow the cooldown step length.
