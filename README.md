@@ -1,5 +1,6 @@
-# Implementation of a custom Stochastic Gradient Descent with Warm Restarts (SGDR) 
-This repository includes a custom Keras callback to be used in training that allows implementation of cyclical learning rate policies. 
+# Implementation of a custom learning rate scheduler based on "Stochastic Gradient Descent with Warm Restarts" method
+This repository includes a custom Keras callback to be used in training that allows the implementation of cyclical learning rate policie as detailed in Leslie Smith's paper [Cyclical Learning Rates for Training Neural Networks
+arXiv:1506.01186v4](https://arxiv.org/abs/1506.01186 "Title"). 
 
 ## How to use?
 The custom Keras callback is available in a Python file [SGDR_custom.py](./src/SGDR_custom.py). You can directly import this callback into your code for use during the training process.
