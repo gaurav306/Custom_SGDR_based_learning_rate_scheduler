@@ -1,9 +1,6 @@
 # Implementation of a custom Stochastic Gradient Descent with Warm Restarts (SGDR) 
-This repository includes a Keras callback to be used in training that allows implementation of cyclical learning rate policies, as detailed in Leslie Smith's paper Cyclical Learning Rates for Training Neural Networks arXiv:1506.01186v4.
+This repository includes a custom Keras callback to be used in training that allows implementation of cyclical learning rate policies. 
 
-A cyclical learning rate is a policy of learning rate adjustment that increases the learning rate off a base value in a cyclical nature. Typically the frequency of the cycle is constant, but the amplitude is often scaled dynamically at either each cycle or each mini-batch iteration.
-
-## Args
 ## Parameters:
 - **min_lr (float):** Minimum learning rate during the entire training.
 - **max_lr (float):** Maximum learning rate before each restart.
@@ -28,7 +25,6 @@ A cyclical learning rate is a policy of learning rate adjustment that increases 
 ## Examples
 
 ### 1. Cosine annealing with initial warmup, decaying max-lr and increasing warmup length. Fixed length for cycles.
-
 ```python
 sgdr = SGDRScheduler_custom(
     min_lr=0.0001, 
@@ -47,11 +43,8 @@ sgdr = SGDRScheduler_custom(
     new_cooldown_mult_factor=1.1,
     )
 ```
-
 ![example1](./TEST/LRS_1.png "example1")
-
 ### 2. Cosine annealing without initial warmup and constant max-lr. Fixed length for cycles.
-
 ```python
 sgdr = SGDRScheduler_custom(
     min_lr=0.0001, 
@@ -70,11 +63,8 @@ sgdr = SGDRScheduler_custom(
     new_cooldown_mult_factor=1,
     )
 ```
-
 ![example2](./TEST/LRS_2.png "example2")
-
 ### 3. Cosine annealing with initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles.
-
 ```python
 sgdr = SGDRScheduler_custom(
     min_lr=0.0001, 
@@ -93,12 +83,8 @@ sgdr = SGDRScheduler_custom(
     new_cooldown_mult_factor=1.2,
     )
 ```
-
 ![example3](./TEST/LRS_3.png "example3")
-
-
 ### 4. Cosine annealing with initial warmup, increasing warmup length, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 70% reduced max-lr.
-
 ```python
 sgdr = SGDRScheduler_custom(
     min_lr=0.0001, 
@@ -117,6 +103,4 @@ sgdr = SGDRScheduler_custom(
     new_cooldown_mult_factor=1.2,
     )
 ```
-
 ![example4](./TEST/LRS_4.png "example4")
-
