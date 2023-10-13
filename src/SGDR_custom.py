@@ -28,7 +28,7 @@ class SGDRScheduler_custom(Callback):       #modified to have warmup every resta
                                 Decide whether to have post warmup step, i.e. after first warmup.
 
 
-        number_of_cooldowns_before_switch (int): Epoch to switch to a new cooldown length.
+        number_of_cooldowns_before_switch (int): number of cooldowns when switch to a new cooldown length.
         new_cooldown_length (int): New cooldown length after switch epoch.
         new_cooldown_mult_factor (float): Factor to grow the new cooldown length.
 

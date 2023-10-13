@@ -35,7 +35,7 @@ A cyclical learning rate is a policy of learning rate adjustment that increases 
 
 ## Examples
 
-### Cosine annealing with initial warmup and decaying max learning rate
+### 1. Cosine annealing with initial warmup and decaying max-lr. Fixed lenght for cycles.
 
 ```python
 sgdr = SGDRScheduler_custom(
@@ -50,10 +50,81 @@ sgdr = SGDRScheduler_custom(
     warmup_length=10,
     warmup_mult_factor=1,
     if_no_post_warmup=0,
-    number_of_cooldowns_before_switch=4,
+    number_of_cooldowns_before_switch=0,
     new_cooldown_length=30,
     new_cooldown_mult_factor=1.1,
     )
 ```
 
 ![example1](./TEST/LRS_1.png "example1")
+
+### 2. Cosine annealing without initial warmup and constant max-lr. Fixed length for cycles.
+
+```python
+sgdr = SGDRScheduler_custom(
+    min_lr=0.0001, 
+    max_lr=0.01, 
+    steps_per_epoch=68,
+    first_lr_drop_mult=1,
+    general_lr_decay=1, 
+    if_warmup_cooldown_start=1,
+    init_cooldown_length=30,
+    init_cooldown_mult_factor=1,
+    warmup_length=10,
+    warmup_mult_factor=1,
+    if_no_post_warmup=0,
+    number_of_cooldowns_before_switch=0,
+    new_cooldown_length=30,
+    new_cooldown_mult_factor=1,
+    )
+```
+
+![example2](./TEST/LRS_2.png "example2")
+
+### 3. Cosine annealing with initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles.
+
+```python
+sgdr = SGDRScheduler_custom(
+    min_lr=0.0001, 
+    max_lr=0.01, 
+    steps_per_epoch=68,
+    first_lr_drop_mult=1,
+    general_lr_decay=0.95, 
+    if_warmup_cooldown_start=0,
+    init_cooldown_length=20,
+    init_cooldown_mult_factor=1,
+    warmup_length=10,
+    warmup_mult_factor=1,
+    if_no_post_warmup=0,
+    number_of_cooldowns_before_switch=5,
+    new_cooldown_length=40,
+    new_cooldown_mult_factor=1.2,
+    )
+```
+
+![example3](./TEST/LRS_3.png "example3")
+
+
+### 4. Cosine annealing with initial warmup, 5 initial small cycles and decaying max-lr. Fixed length for initial small cycles and increasing length for followup cycles. First cycle has 75% reduced max-lr.
+
+```python
+sgdr = SGDRScheduler_custom(
+    min_lr=0.0001, 
+    max_lr=0.01, 
+    steps_per_epoch=68,
+    first_lr_drop_mult=0.75,
+    general_lr_decay=0.95, 
+    if_warmup_cooldown_start=0,
+    init_cooldown_length=20,
+    init_cooldown_mult_factor=1,
+    warmup_length=10,
+    warmup_mult_factor=1,
+    if_no_post_warmup=0,
+    number_of_cooldowns_before_switch=5,
+    new_cooldown_length=40,
+    new_cooldown_mult_factor=1.2,
+    )
+```
+
+![example4](./TEST/LRS_4.png "example4")
+
