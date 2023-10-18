@@ -25,7 +25,6 @@ To help you plan the parameters of the learning rate policy, a Jupyter Notebook 
 - **new_cooldown_mult_factor (float):** Factor to grow the new cooldown length.
 - **verbose (int):** Verbosity mode.
 
-ParametersSGDR.jpg
 ![params](./TEST/ParametersSGDR.jpg "ParametersSGDR")
 
 
