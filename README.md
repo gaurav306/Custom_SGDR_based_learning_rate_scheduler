@@ -24,6 +24,10 @@ To help you plan the parameters of the learning rate policy, a Jupyter Notebook 
 - **new_cooldown_mult_factor (float):** Factor to grow the new cooldown length.
 - **verbose (int):** Verbosity mode.
 
+ParametersSGDR.jpg
+![params](./TEST/ParametersSGDR.jpg "ParametersSGDR")
+
+
 ## References
   1. **CyclicalLR:** Cyclical Learning Rates for Training Neural Networks: https://arxiv.org/pdf/1506.01186.pdf;
   2. **CosineLR:** SGDR: STOCHASTIC GRADIENT DESCENT WITH WARM RESTARTS: https://arxiv.org/pdf/1608.03983.pdf;
